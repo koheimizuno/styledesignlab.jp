@@ -1,0 +1,585 @@
+@import "variables.scss";
+@import "mixins.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: $dark-color;
+  font-family: "Koburina Gothic Std", sans-serif;
+  background-color: $white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul > li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.hidden {
+  display: none;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+}
+
+img {
+  max-width: 100%;
+  margin: auto;
+  object-fit: cover;
+}
+
+.pc-only {
+  @include mq {
+    display: none;
+  }
+}
+
+.sp-only {
+  display: none;
+  @include mq {
+    display: unset;
+  }
+}
+
+.container-lg {
+  @include container-size(1680px, 70px, 70px);
+  @include mq {
+    @include container-size(1680px, 16px, 16px);
+  }
+}
+
+.container-md {
+  @include container-size(1440px);
+}
+
+.container-sm {
+  @include container-size(1280px);
+}
+
+.btn1 {
+  position: relative;
+  outline: 0;
+  padding-left: 20px;
+  transform: translateX(-20px);
+  &:hover {
+    &::before {
+      transform-origin: left top;
+      transform: scale(0, 1);
+    }
+    > a::after {
+      right: -45px;
+    }
+  }
+  &::before {
+    content: "";
+    width: calc(100% + 48px);
+    height: 1px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    background: $gray-color;
+    transform-origin: right top;
+    transform: scale(1, 1);
+    transition: transform 0.3s;
+  }
+  > a {
+    position: relative;
+    @include text-mixin(
+      $size: 16px,
+      $color: $gray-color,
+      $weight: 600,
+      $letter-spacing: 2px
+    );
+    @include mq {
+      @include text-mixin(
+        $size: 14px,
+        $color: $gray-color,
+        $letter-spacing: 2.2px
+      );
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -40px;
+      transform: translateY(-50%);
+      width: 17px;
+      height: 17px;
+      background: url("../imgs/icons/arrow-right.svg") no-repeat center;
+      transition: right 0.3s;
+      @include mq {
+        background: url("../imgs/icons/arrow-right-sp.svg") no-repeat center;
+      }
+    }
+  }
+}
+
+.btn2 {
+  width: 384px;
+  height: 104px;
+  @include flex-mixin($justify-content: center);
+  @include text-mixin($size: 24px, $letter-spacing: 2px);
+  background-color: $white;
+  transition: background-color 0.5s;
+  @include mq {
+    width: 100%;
+    height: 64px;
+    @include text-mixin($size: 16px, $letter-spacing: 1.3px);
+  }
+  &:hover {
+    background-color: #bcbfc1;
+  }
+}
+
+.btn3 {
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  @include text-mixin($size: 28px, $letter-spacing: 4.5px, $color: $white);
+  @include mq {
+    padding: 5px;
+    @include text-mixin($size: 14px, $letter-spacing: 2.2px, $color: $white);
+  }
+  &:hover {
+    &::before {
+      transform-origin: left top;
+      transform: scale(1, 1);
+    }
+  }
+  &::before {
+    content: "";
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    background: $white;
+    transform-origin: right top;
+    transform: scale(0, 1);
+    transition: transform 0.3s;
+  }
+}
+
+.btn4 {
+  width: 768px;
+  height: 144px;
+  background-color: $dark-color;
+  transition: opacity 0.5s ease;
+  @include flex-mixin($justify-content: center);
+  &:hover {
+    opacity: 0.9;
+    > span::after {
+      right: -125px;
+    }
+  }
+  @include mq {
+    width: 100%;
+    max-width: 326px;
+    height: 72px;
+  }
+  > span {
+    display: inline-block;
+    position: relative;
+    transform: translateX(-12px);
+    @include text-mixin($size: 28px, $letter-spacing: 2.2px, $color: $white);
+    @include mq {
+      transform: translateX(-20px);
+      @include text-mixin($size: 14px, $letter-spacing: 1.1px, $color: $white);
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -120px;
+      transform: translateY(-50%);
+      width: 56px;
+      height: 56px;
+      background: url("../imgs/icons/next-btn-icon-fill.svg") no-repeat center;
+      background-size: 56px 56px;
+      transition: right 0.3s;
+      @include mq {
+        right: -58px;
+        width: 34px;
+        height: 34px;
+        background-size: 34px 34px;
+      }
+    }
+  }
+}
+
+.tag {
+  @include text-mixin($size: 16px, $letter-spacing: 0.5px, $color: $gray-color);
+  padding: 0 24px;
+  border: 1px solid $gray-color;
+}
+
+.tag.active {
+  background-color: $gray-color;
+  color: $white;
+}
+
+div:has(.section-title-dark) {
+  position: relative;
+}
+
+.section-title-dark {
+  @include flex-mixin($direction: column, $gap: 24px);
+  position: absolute;
+  top: -64px;
+  left: 109px;
+  @include mq {
+    top: -64px;
+    left: 24px;
+  }
+  p {
+    writing-mode: vertical-rl;
+    &:first-of-type {
+      @include text-mixin(
+        $size: 20px,
+        $weight: 600,
+        $letter-spacing: 3.2px,
+        $color: $white
+      );
+      @include mq {
+        @include text-mixin(
+          $size: 14px,
+          $weight: 600,
+          $letter-spacing: 2.3px,
+          $color: $white
+        );
+      }
+    }
+    &:last-of-type {
+      @include text-mixin(
+        $size: 16px,
+        $weight: 250,
+        $letter-spacing: 2.5px,
+        $color: $white
+      );
+      @include mq {
+        @include text-mixin(
+          $size: 12px,
+          $weight: 250,
+          $letter-spacing: 2px,
+          $color: $white
+        );
+      }
+    }
+  }
+}
+
+header {
+  nav {
+    @include flex-mixin();
+    padding-top: 80px;
+    padding-bottom: 64px;
+    width: 100%;
+    box-sizing: border-box;
+    @include mq {
+      padding-top: 24px;
+      padding-bottom: 18px;
+    }
+    .logo-wrapper {
+      @include flex-mixin($gap: 20px);
+      .logo {
+        object-fit: cover;
+        height: 117px;
+        @include mq {
+          height: 70px;
+        }
+      }
+      .logo-txt {
+        display: none;
+      }
+    }
+    .menu-list {
+      @include flex-mixin($gap: 72px);
+      @include mq {
+        @include flex-mixin($gap: 36px);
+      }
+      > li {
+        cursor: pointer;
+        > img {
+          width: 40px;
+          @include mq {
+            width: 20px;
+          }
+        }
+      }
+    }
+  }
+  section.hamburger-sec {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    background: #fff url("../imgs/common/hamburger-bgimg.png") no-repeat center;
+    background-size: cover;
+    transform: translateX(100%);
+    transition: transform 1s ease;
+    @include mq {
+      background: #fff url("../imgs/common/hamburger-spbgimg.png") no-repeat
+        center;
+      background-size: cover;
+    }
+    .close-btn {
+      position: absolute;
+      top: 100px;
+      right: 100px;
+      z-index: 1;
+      cursor: pointer;
+      img {
+        width: 40px;
+        height: 40px;
+        @include mq {
+          width: 20px;
+          height: 20px;
+        }
+      }
+      @include mq {
+        top: 10px;
+        right: 10px;
+      }
+    }
+    > div {
+      position: relative;
+      background-color: rgba($color: #000000, $alpha: 0.75);
+      margin: 32px;
+      width: calc(100% - 80px);
+      height: calc(100% - 64px);
+      @include flex-mixin($justify-content: center, $gap: 15%);
+      @include mq {
+        margin: 10px;
+        width: calc(100% - 20px);
+        height: calc(100% - 20px);
+        padding: 0 40px;
+        @include flex-mixin(
+          $direction: column-reverse,
+          $justify-content: center,
+          $gap: 56px
+        );
+      }
+      > div {
+        &:first-of-type {
+          @include flex-mixin($direction: column, $gap: 80px);
+          @include mq {
+            @include flex-mixin($direction: column, $gap: 40px);
+            width: 100%;
+          }
+          > ul {
+            @include flex-mixin($direction: column, $gap: 40px);
+            @include mq {
+              @include flex-mixin($direction: column, $gap: 16px);
+              width: 100%;
+            }
+            > li {
+              @include mq {
+                width: 100%;
+              }
+            }
+          }
+          > div {
+            @include flex-mixin($justify-content: center, $gap: 40px);
+            @include mq {
+              @include flex-mixin(
+                $direction: column,
+                $justify-content: center,
+                $gap: 27px
+              );
+              .instagram-icon {
+                width: 30px;
+                height: auto;
+              }
+              .at-home-btn {
+                width: 112px;
+                height: auto;
+                &:hover {
+                  scale: 1.05;
+                }
+              }
+            }
+          }
+        }
+        &:last-of-type {
+          @include flex-mixin(
+            $direction: column,
+            $align-items: flex-start,
+            $gap: 104px
+          );
+          @include mq {
+            width: 100%;
+            @include flex-mixin(
+              $direction: column,
+              $align-items: center,
+              $gap: 64px
+            );
+          }
+          > ul {
+            @include grid-mixin();
+            @include mq {
+              @include grid-mixin(
+                $columns: 2,
+                $column-gap: 64px,
+                $row-gap: 5px
+              );
+            }
+          }
+        }
+      }
+      > p {
+        position: absolute;
+        left: 50%;
+        bottom: 38px;
+        z-index: 2;
+        transform: translateX(-50%);
+        width: 100%;
+        text-align: center;
+        @include text-mixin(
+          $size: 16px,
+          $weight: 400,
+          $letter-spacing: 2.5px,
+          $color: $white
+        );
+        @include mq {
+          @include text-mixin(
+            $size: 14px,
+            $weight: 400,
+            $letter-spacing: 2.2px,
+            $color: $white
+          );
+        }
+      }
+    }
+  }
+
+  &.top-header {
+    nav {
+      padding-top: 84px;
+      padding-bottom: 84px;
+      @include mq {
+        padding-top: 24px;
+        padding-bottom: 18px;
+      }
+      .logo {
+        height: 70px;
+      }
+      .logo-txt {
+        display: block;
+        @include mq {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  padding-top: 160px;
+  padding-bottom: 80px;
+  background-color: $dark-color;
+  @include mq {
+    padding-top: 80px;
+    padding-bottom: 64px;
+  }
+  > ul.link-list {
+    @include grid-mixin($columns: 3, $column-gap: 64px, $row-gap: 0px);
+    @include mq {
+      @include grid-mixin($columns: 1, $column-gap: 0px, $row-gap: 16px);
+      padding: 0 32px;
+    }
+  }
+  > div.divider {
+    max-width: 1676px;
+    width: 100%;
+    height: 1px;
+    background-color: $gray-color;
+    margin: 80px auto;
+    @include mq {
+      max-width: calc(100vw - 32px);
+    }
+  }
+  > div.external-links {
+    @include flex-mixin($justify-content: center, $gap: 40px);
+    @include mq {
+      @include flex-mixin(
+        $direction: column,
+        $justify-content: center,
+        $gap: 16px
+      );
+      > a {
+        &:first-of-type img {
+          width: 30px;
+        }
+        &:last-of-type img {
+          width: 112px;
+        }
+      }
+    }
+  }
+  > ul.page-links {
+    padding: 84px 0 160px;
+    @include flex-mixin($justify-content: center, $gap: 56px, $wrap: wrap);
+    @include mq {
+      padding: 80px 0;
+      @include grid-mixin($columns: 2, $column-gap: 0);
+    }
+    > li {
+      margin: auto;
+      > a {
+        @include text-mixin(
+          $size: 20px,
+          $letter-spacing: 3.2px,
+          $color: $white
+        );
+        @include mq {
+          @include text-mixin(
+            $size: 14px,
+            $letter-spacing: 2.2px,
+            $color: $white
+          );
+        }
+      }
+    }
+  }
+  > div.copyright {
+    text-align: center;
+    @include text-mixin($size: 16px, $letter-spacing: 2.5px, $color: $white);
+    @include mq {
+      @include text-mixin($size: 14px, $letter-spacing: 2.2px, $color: $white);
+    }
+  }
+}

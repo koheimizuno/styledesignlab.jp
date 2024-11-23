@@ -1,0 +1,686 @@
+@import "variables.scss";
+@import "mixins.scss";
+
+.page-header {
+  position: relative;
+  > p {
+    opacity: 0.1;
+    z-index: -1;
+    @include text-mixin(
+      $size: 184px,
+      $weight: 250,
+      $letter-spacing: 5.52px,
+      $color: $gray-color
+    );
+    @include mq {
+      @include text-mixin(
+        $size: 48px,
+        $weight: 250,
+        $letter-spacing: 1.44px,
+        $color: $gray-color
+      );
+    }
+  }
+  > h1 {
+    position: absolute;
+    bottom: 75px;
+    left: 0;
+    margin-left: 240px;
+    @include text-mixin(
+      $size: 64px,
+      $weight: 600,
+      $letter-spacing: 1.92px,
+      $color: $gray-color
+    );
+    @include mq {
+      margin-left: 32px;
+      bottom: 37px;
+      @include text-mixin(
+        $size: 20px,
+        $weight: 600,
+        $letter-spacing: 0.6px,
+        $color: $gray-color
+      );
+    }
+  }
+  > ul {
+    margin-right: 136px;
+    @include flex-mixin($justify-content: flex-end, $gap: 15px);
+    @include mq {
+      margin-left: 32px;
+      @include flex-mixin($justify-content: flex-start, $gap: 15px);
+    }
+    > li {
+      > img {
+        @include mq {
+          height: 8px;
+        }
+      }
+      a {
+        @include text-mixin(
+          $size: 18px,
+          $letter-spacing: 0.5px,
+          $color: $gray-color
+        );
+        @include mq {
+          @include text-mixin(
+            $size: 12px,
+            $letter-spacing: 0.36px,
+            $color: $gray-color
+          );
+        }
+      }
+    }
+  }
+}
+
+.section-title {
+  > p {
+    @include text-mixin(
+      $size: 18px,
+      $weight: 250,
+      $letter-spacing: 1.4px,
+      $color: $gray-color
+    );
+    @include mq {
+      @include text-mixin(
+        $size: 14px,
+        $weight: 250,
+        $letter-spacing: 1.12px,
+        $color: $gray-color
+      );
+    }
+  }
+  > h2 {
+    @include text-mixin($size: 32px, $letter-spacing: 1px, $color: $dark-color);
+    @include mq {
+      @include text-mixin(
+        $size: 24px,
+        $letter-spacing: 0.72px,
+        $color: $dark-color
+      );
+    }
+  }
+}
+
+.company-main {
+  section.main-visual {
+    > div:not(.page-header) {
+      margin-top: 40px;
+      margin-left: 240px;
+      @include flex-mixin($align-items: center, $gap: 160px);
+      @include mq {
+        margin-left: 32px;
+        @include flex-mixin(
+          $direction: column-reverse,
+          $align-items: flex-start,
+          $gap: 40px
+        );
+      }
+      > div {
+        // margin-top: 113px;
+        @include flex-mixin(
+          $direction: column,
+          $align-items: flex-start,
+          $gap: 40px
+        );
+        @include mq {
+          margin-top: unset;
+          gap: 24px;
+        }
+        > p {
+          @include text-mixin(
+            $size: 16px,
+            $letter-spacing: 2.5px,
+            $color: $gray-color
+          );
+          @include mq {
+            @include text-mixin(
+              $size: 14px,
+              $letter-spacing: 2.24px,
+              $color: $gray-color
+            );
+          }
+        }
+        > ul {
+          margin-left: 10px;
+          @include flex-mixin(
+            $direction: column,
+            $align-items: flex-start,
+            $gap: 16px
+          );
+          @include mq {
+            gap: 8px;
+          }
+          a {
+            white-space: nowrap;
+            @include text-mixin(
+              $size: 18px,
+              $letter-spacing: 0.5px,
+              $color: $gray-color
+            );
+            @include mq {
+              @include text-mixin(
+                $size: 16px,
+                $letter-spacing: 0.48px,
+                $color: $gray-color
+              );
+            }
+          }
+        }
+      }
+    }
+  }
+  section.message-sec {
+    margin: 480px auto 200px;
+    @include flex-mixin();
+    @include mq {
+      margin: 200px auto 160px;
+      padding: 0 40px;
+    }
+  }
+  section.concept-sec {
+    .section-title {
+      padding: 0 240px;
+      @include mq {
+        padding: 0 32px;
+      }
+    }
+    .concept-content {
+      margin-top: 96px;
+      @include mq {
+        @include flex-mixin($direction: column, $gap: 80px);
+        margin-top: 32px;
+        padding: 0 32px;
+      }
+      > div {
+        @include flex-mixin();
+        &:nth-child(odd) {
+          @include mq {
+            @include flex-mixin($direction: column, $gap: 80px);
+          }
+          > img {
+            width: calc(880 / 1920 * 100%);
+            @include mq {
+              width: 100%;
+            }
+          }
+          > div {
+            margin-right: 240px;
+            @include mq {
+              margin-right: 0;
+            }
+          }
+        }
+        &:nth-child(even) {
+          transform: translateY(-40px);
+          @include mq {
+            @include flex-mixin($direction: column-reverse, $gap: 80px);
+            transform: none;
+          }
+          > img {
+            width: calc(720 / 1920 * 100%);
+            @include mq {
+              width: 100%;
+            }
+          }
+          > div {
+            margin-left: 240px;
+            @include mq {
+              margin-left: 0;
+            }
+          }
+        }
+
+        > img {
+          margin: unset;
+        }
+        > div {
+          max-width: 560px;
+          @include flex-mixin(
+            $direction: column,
+            $align-items: flex-start,
+            $gap: 40px
+          );
+          @include mq {
+            gap: 32px;
+          }
+          > h3 {
+            @include text-mixin($size: 24px, $color: $dark-color);
+            @include mq {
+              @include text-mixin($size: 18px, $color: $dark-color);
+            }
+          }
+          > p {
+            @include text-mixin($size: 18px, $color: $dark-color);
+            @include mq {
+              @include text-mixin($size: 14px, $color: $dark-color);
+            }
+          }
+        }
+      }
+    }
+  }
+  section.divider-sec {
+    margin: 200px auto 400px;
+    @include mq {
+      margin: 160px auto 96px;
+    }
+  }
+  section.construction-sec {
+    @include flex-mixin($direction: column, $gap: 200px);
+    margin-bottom: 400px;
+    @include mq {
+      @include flex-mixin($direction: column, $gap: 96px);
+      margin-bottom: 160px;
+    }
+    .construction-row {
+      @include grid-mixin($columns: 2, $column-gap: 0, $row-gap: 0);
+      @include mq {
+        &:nth-child(odd) {
+          @include flex-mixin($direction: column-reverse, $gap: 96px);
+        }
+        &:nth-child(even) {
+          @include flex-mixin($direction: column, $gap: 96px);
+        }
+      }
+      > div.construction-txt {
+        max-width: 450px;
+        margin: auto;
+        @include flex-mixin(
+          $direction: column,
+          $justify-content: center,
+          $align-items: flex-start,
+          $gap: 56px
+        );
+        @include mq {
+          gap: 40px;
+          padding: 0 32px;
+        }
+        p {
+          @include text-mixin($size: 18px, $weight: 250, $color: $dark-color);
+          @include mq {
+            @include text-mixin(
+              $size: 14px,
+              $weight: 250,
+              $letter-spacing: 1.12px,
+              $color: $dark-color
+            );
+          }
+        }
+        h2 {
+          @include text-mixin(
+            $size: 32px,
+            $letter-spacing: 0.96px,
+            $color: $dark-color
+          );
+          @include mq {
+            @include text-mixin(
+              $size: 24px,
+              $letter-spacing: 0.72px,
+              $color: $dark-color
+            );
+          }
+        }
+        > div:last-of-type {
+          @include flex-mixin(
+            $direction: column,
+            $align-items: flex-start,
+            $gap: 20px
+          );
+          > a {
+            &:first-of-type {
+              padding: 0 16px;
+              border-bottom: 1px solid $gray-color;
+              @include text-mixin(
+                $size: 24px,
+                $letter-spacing: 0.72px,
+                $color: $gray-color
+              );
+              @include mq {
+                padding: 0 12px;
+                @include text-mixin(
+                  $size: 18px,
+                  $letter-spacing: 0.54px,
+                  $color: $gray-color
+                );
+              }
+            }
+            &:last-of-type {
+              @include mq {
+                max-width: 112px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  section.company-info {
+    background-color: $dark-color;
+    padding-top: 400px;
+    @include mq {
+      padding-top: 200px;
+    }
+    .section-title {
+      margin-left: 240px;
+      @include mq {
+        margin-left: 32px;
+      }
+      p,
+      h2 {
+        color: $white;
+      }
+    }
+    .company-info-content {
+      @include grid-mixin($columns: 2, $column-gap: 0, $row-gap: 0);
+      color: $white;
+      margin-bottom: 240px;
+      @include mq {
+        @include flex-mixin($direction: column-reverse, $gap: 120px);
+        margin-bottom: 96px;
+      }
+      > div.info-txt {
+        margin: auto 240px auto 0;
+        @include text-mixin($size: 20, $color: $white);
+        @include mq {
+          margin: auto;
+          padding: 0 32px;
+        }
+        > p {
+          padding: 32px 0;
+          border-bottom: 1px solid $gray-color;
+          @include flex-mixin($align-items: flex-start, $gap: 58px);
+          @include mq {
+            gap: 24px;
+          }
+          > span {
+            display: inline-block;
+            &:first-child {
+              width: 218px;
+              @include mq {
+                width: 90px;
+              }
+            }
+            &:last-child {
+              width: calc(100% - 218px);
+              @include mq {
+                width: calc(100% - 90px);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  section.staff-sec {
+    margin: 400px auto 200px;
+    @include mq {
+      margin: 160px auto 104px;
+    }
+    .section-title {
+      text-align: center;
+    }
+    .staff-row {
+      margin-top: 216px;
+      @include flex-mixin($justify-content: center, $gap: 60px);
+      @include mq {
+        margin-top: 80px;
+        padding: 0 32px;
+        @include flex-mixin($direction: column, $gap: 80px);
+      }
+      .staff-col {
+        width: 363px;
+        height: 524px;
+        position: relative;
+        @include mq {
+          width: 243px;
+          height: 393px;
+        }
+        > div {
+          &:first-of-type {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            @include flex-mixin($align-items: flex-start, $gap: 0);
+            @include mq {
+              position: relative;
+              @include flex-mixin();
+            }
+            > span {
+              writing-mode: vertical-lr;
+              @include text-mixin(
+                $size: 16px,
+                $letter-spacing: 0.5px,
+                $color: $gray-color
+              );
+              @include mq {
+                position: absolute;
+                top: 6px;
+                left: -6px;
+                @include text-mixin(
+                  $size: 12px,
+                  $letter-spacing: 0.36px,
+                  $color: $gray-color
+                );
+              }
+            }
+            > img {
+              @include mq {
+                max-width: 198px;
+                margin: auto;
+              }
+            }
+          }
+          &:last-of-type {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: $dark-color;
+            opacity: 0.9;
+            padding: 30px;
+            width: 321px;
+            height: 224px;
+            @include mq {
+              width: 100%;
+              max-width: 240px;
+              height: auto;
+              padding: 24px;
+            }
+            > div {
+              > p {
+                @include text-mixin($size: 16px, $color: $white);
+                @include mq {
+                  @include text-mixin($size: 12px, $color: $white);
+                }
+              }
+              > div {
+                @include flex-mixin($justify-content: flex-start, $gap: 16px);
+                h5 {
+                  white-space: nowrap;
+                  @include text-mixin(
+                    $size: 24px,
+                    $letter-spacing: 0.72px,
+                    $color: $white
+                  );
+                  @include mq {
+                    @include text-mixin(
+                      $size: 18px,
+                      $letter-spacing: 1.44px,
+                      $color: $white
+                    );
+                  }
+                }
+                p {
+                  white-space: nowrap;
+                  @include text-mixin(
+                    $size: 16px,
+                    $letter-spacing: 1.3px,
+                    $color: $white
+                  );
+                  @include mq {
+                    @include text-mixin(
+                      $size: 12px,
+                      $letter-spacing: 0.96px,
+                      $color: $white
+                    );
+                  }
+                }
+              }
+            }
+            > p {
+              @include text-mixin($size: 16px, $color: $white);
+              @include mq {
+                @include text-mixin($size: 12px, $color: $white);
+              }
+              &:first-of-type {
+                @include text-mixin(
+                  $size: 16px,
+                  $line-height: 25.6px,
+                  $color: $white
+                );
+                @include mq {
+                  @include text-mixin($size: 12px, $color: $white);
+                }
+              }
+              margin-top: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+  section.contact-sec {
+    margin-bottom: 560px;
+    text-align: -webkit-center;
+    @include mq {
+      margin-bottom: 160px;
+    }
+    > p {
+      @include text-mixin($size: 18px, $color: $dark-color);
+      @include mq {
+        @include text-mixin($size: 16px, $color: $dark-color);
+      }
+    }
+    .btn4 {
+      margin: 120px auto 200px;
+      @include mq {
+        margin: 64px auto 104px;
+      }
+    }
+  }
+}
+
+.works-main {
+  section.works-sec {
+    padding: 160px 0;
+    @include mq {
+      padding: 60px 0 160px;
+    }
+    .category {
+      @include flex-mixin($justify-content: center, $gap: 64px);
+      @include mq {
+        padding: 0 32px;
+        @include flex-mixin($direction: column, $gap: 0);
+      }
+      &.active {
+        > div {
+          @include mq {
+            background-color: $gray-color;
+            p {
+              color: $white;
+            }
+          }
+        }
+      }
+      > div {
+        @include mq {
+          @include flex-mixin($justify-content: flex-start, $gap: 16px);
+          border: 1px $gray-color solid;
+          width: 100%;
+          padding: 8px 20px;
+        }
+        > p {
+          @include text-mixin(
+            $size: 16px,
+            $letter-spacing: 2.56px,
+            $color: $gray-color
+          );
+        }
+        div.sp-only {
+          @include mq {
+            display: inline-block;
+            cursor: pointer;
+            .bar1,
+            .bar2 {
+              width: 25px;
+              height: 2px;
+              background-color: $white;
+              margin: 10px 0;
+              transition: 0.4s;
+            }
+            &.change .bar1 {
+              transform: translate(0, 5px) rotate(-45deg);
+            }
+
+            &.change .bar2 {
+              transform: translate(0, -7px) rotate(45deg);
+            }
+          }
+        }
+      }
+      > ul {
+        @include flex-mixin($justify-content: center, $gap: 16px);
+        @include mq {
+          @include flex-mixin(
+            $direction: column,
+            $align-items: flex-start,
+            $gap: 8px
+          );
+          border: 1px $gray-color solid;
+          border-top: 0;
+          width: 100%;
+          max-height: 0;
+          overflow: hidden;
+          transition: all 0.5s ease-in-out;
+          &.change {
+            max-height: 329px;
+            padding: 48px 0;
+          }
+        }
+        @include mq {
+          > li {
+            position: relative;
+            cursor: pointer;
+            padding-left: 40px;
+            margin: 0 10px;
+            border: 0;
+            background-color: unset;
+            &.active {
+              color: $gray-color;
+            }
+            &::before {
+              content: "";
+              position: absolute;
+              left: 0;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 20px;
+              height: 20px;
+              border: 2px solid $gray-color;
+              border-radius: 4px;
+              background-color: transparent;
+              transition: background-color 0.3s, border-color 0.3s;
+            }
+
+            &.active::before {
+              background-color: $gray-color;
+              border-color: $gray-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}

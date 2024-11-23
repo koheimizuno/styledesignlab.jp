@@ -1,0 +1,644 @@
+@import "variables.scss";
+@import "mixins.scss";
+
+main {
+  section.main-visual {
+    position: relative;
+    > img {
+      position: absolute;
+      &.top-hero-txt {
+        left: 120px;
+        bottom: 177px;
+      }
+      &.top-hero-sptxt {
+        left: 32px;
+        bottom: -135px;
+      }
+    }
+  }
+  section.about-sec {
+    @include container-size(637px, 32px, 32px);
+    @include flex-mixin($direction: column, $gap: 120px);
+    padding-top: 400px;
+    padding-bottom: 450px;
+    @include mq {
+      padding-top: 320px;
+      padding-bottom: 180px;
+    }
+    > div {
+      @include flex-mixin($direction: column, $gap: 40px);
+      @include mq {
+        @include flex-mixin($direction: column, $gap: 60px);
+      }
+      > div {
+        text-align: center;
+        @include mq {
+          @include flex-mixin($direction: column, $gap: 16px);
+        }
+        > h3 {
+          @include text-mixin(
+            $size: 24px,
+            $weight: 600,
+            $letter-spacing: 4.8px
+          );
+          @include mq {
+            @include text-mixin($size: 24px, $letter-spacing: 2px);
+          }
+        }
+        > p {
+          @include text-mixin($size: 20px, $weight: 600, $letter-spacing: 2px);
+          @include mq {
+            @include text-mixin($size: 16px, $line-height: 25px);
+          }
+        }
+      }
+      > p {
+        @include text-mixin($size: 18px, $letter-spacing: 1.5px);
+      }
+    }
+  }
+  section.contents-sec {
+    position: relative;
+    padding-bottom: 400px;
+    @include flex-mixin($justify-content: flex-end);
+    @include mq {
+      padding-bottom: 105px;
+    }
+    .contents-swiper {
+      position: unset;
+      margin-left: 240px;
+      margin-right: 0;
+      @include mq {
+        margin-left: 32px;
+      }
+      .swiper-wrapper {
+        .swiper-slide {
+          position: relative;
+          padding-bottom: 200px;
+          @include mq {
+            padding-bottom: 186px;
+          }
+          div.img-wrapper {
+            @include flex-mixin($justify-content: flex-end);
+            img {
+              width: calc(100% - 80px);
+              max-width: 1600px;
+              margin: unset;
+              cursor: grab;
+              @include mq {
+                width: calc(100% - 38px);
+              }
+            }
+          }
+          div.content-txt {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            > span {
+              position: relative;
+              display: block;
+              @include text-mixin(
+                $size: 24px,
+                $letter-spacing: 4px,
+                $weight: 600,
+                $color: $gray-color
+              );
+              &::after {
+                content: "";
+                position: absolute;
+                bottom: -6px;
+                left: 0;
+                width: 32px;
+                height: 4px;
+                background-color: $gray-color;
+                @include mq {
+                  width: 24px;
+                }
+              }
+              @include mq {
+                @include text-mixin(
+                  $size: 18px,
+                  $letter-spacing: 3px,
+                  $weight: 600,
+                  $color: $gray-color
+                );
+              }
+            }
+            > h5 {
+              display: inline-block;
+              margin-top: 48px;
+              width: 336px;
+              padding-left: 16px;
+              @include text-mixin(
+                $size: 24px,
+                $letter-spacing: 0.7px,
+                $color: $white
+              );
+              background-color: $gray-color;
+              @include mq {
+                width: 252px;
+                margin-top: 24px;
+                @include text-mixin(
+                  $size: 18px,
+                  $letter-spacing: 0.5px,
+                  $color: $white
+                );
+              }
+            }
+            > h3 {
+              @include text-mixin(
+                $size: 88px,
+                $line-height: 176px,
+                $weight: 600,
+                $letter-spacing: 2.5px,
+                $color: $dark-color
+              );
+              @include mq {
+                @include text-mixin(
+                  $size: 32px,
+                  $letter-spacing: 1px,
+                  $weight: 600,
+                  $color: $dark-color
+                );
+              }
+            }
+            > p {
+              @include text-mixin($size: 24px, $color: $gray-color);
+              margin-bottom: 80px;
+              @include mq {
+                margin-bottom: 40px;
+                @include text-mixin($size: 16px, $color: $gray-color);
+              }
+            }
+            > button.btn1 {
+              transform: none;
+            }
+          }
+        }
+      }
+      > div {
+        position: absolute;
+        top: -64px;
+        left: 108px;
+        z-index: 1;
+        height: 230px;
+        @include flex-mixin($direction: column);
+        @include mq {
+          height: 202px;
+          top: 0px;
+          left: 25px;
+        }
+        > p {
+          writing-mode: vertical-rl;
+          @include text-mixin(
+            $size: 20px,
+            $weight: 600,
+            $letter-spacing: 3px,
+            $color: $gray-color
+          );
+          @include mq {
+            @include text-mixin(
+              $size: 14px,
+              $weight: 600,
+              $letter-spacing: 2.2px,
+              $color: $gray-color
+            );
+          }
+        }
+        .swiper-pagination {
+          @include flex-mixin($direction: column, $gap: 16px);
+          .swiper-pagination-bullet {
+            background: $white;
+            border: 1px solid $gray-color;
+            opacity: 1;
+          }
+
+          .swiper-pagination-bullet-active {
+            background-color: $gray-color;
+          }
+        }
+      }
+    }
+  }
+  section.divider-sec {
+    margin-bottom: 230px;
+    @include mq {
+      margin-bottom: 80px;
+    }
+  }
+  section.works-sec {
+    position: relative;
+    margin-bottom: 630px;
+    @include mq {
+      margin-bottom: 160px;
+    }
+    .works-swiper {
+      position: unset;
+      margin-left: 320px;
+      margin-right: 0;
+      @include mq {
+        margin-left: 0px;
+        @include flex-mixin($direction: column-reverse, $gap: 40px);
+      }
+      .swiper-wrapper {
+        .swiper-slide {
+          width: unset !important;
+          > div:first-of-type {
+            margin-bottom: 200px;
+          }
+          img {
+            max-width: 1280px;
+            @include mq {
+              height: 390px;
+            }
+          }
+          > div:nth-of-type(2) {
+            @include mq {
+              padding-left: 32px;
+            }
+            > p {
+              @include text-mixin(
+                $size: 28px,
+                $letter-spacing: 1px,
+                $color: $dark-color
+              );
+              padding: 27px 0 16px;
+              @include mq {
+                @include text-mixin(
+                  $size: 20px,
+                  $letter-spacing: 0.6px,
+                  $color: $dark-color
+                );
+                padding: 8px 0 16px;
+              }
+            }
+            > ul {
+              @include flex-mixin($justify-content: flex-start, $gap: 16px);
+            }
+          }
+          > div:last-of-type {
+            margin-left: 52px;
+            button {
+              padding-top: 40px;
+            }
+          }
+        }
+      }
+      > div.page-navigation {
+        position: absolute;
+        top: 166px;
+        left: 108px;
+        z-index: 1;
+        height: 930px;
+        @include flex-mixin($direction: column);
+        @include mq {
+          position: unset;
+          height: 150px;
+          @include flex-mixin($direction: row, $align-items: flex-end);
+          width: 100%;
+          padding: 0 24px;
+        }
+        > div:first-of-type {
+          @include flex-mixin($direction: column, $gap: 24px);
+          p {
+            writing-mode: vertical-rl;
+            &:first-of-type {
+              @include text-mixin(
+                $size: 20px,
+                $weight: 600,
+                $letter-spacing: 3.2px,
+                $color: $gray-color
+              );
+              @include mq {
+                @include text-mixin(
+                  $size: 14px,
+                  $weight: 600,
+                  $letter-spacing: 2.3px,
+                  $color: $gray-color
+                );
+              }
+            }
+            &:last-of-type {
+              @include text-mixin(
+                $size: 16px,
+                $weight: 250,
+                $letter-spacing: 2.5px,
+                $color: $gray-color
+              );
+              @include mq {
+                @include text-mixin(
+                  $size: 12px,
+                  $weight: 250,
+                  $letter-spacing: 2px,
+                  $color: $gray-color
+                );
+              }
+            }
+          }
+        }
+        .swiper-pagination {
+          width: 512px;
+          transform: rotate(90deg);
+          position: absolute;
+          left: -215px;
+          top: 525px;
+        }
+        .navigation-wrapper {
+          position: relative;
+          height: 34px;
+          width: 84px;
+          transform: rotate(90deg);
+          @include flex-mixin($direction: column);
+          @include mq {
+            transform: none;
+          }
+          .swiper-btn {
+            width: 34px;
+            &::after {
+              display: none;
+            }
+            &:first-of-type {
+              left: 0;
+            }
+            &:last-of-type {
+              left: 42px;
+            }
+            img {
+              width: 34px;
+              height: 34px;
+            }
+          }
+        }
+      }
+    }
+  }
+  section.topics-sec {
+    background-color: $dark-color;
+    padding-top: 464px;
+    padding-bottom: 724px;
+    @include mq {
+      padding-top: 224px;
+      padding-bottom: 200px;
+    }
+    .topic-card {
+      width: 373px;
+      @include flex-mixin($direction: column, $gap: 16px);
+      @include mq {
+        width: 260px;
+      }
+      > div {
+        width: 100%;
+        @include flex-mixin($gap: 0);
+        > div {
+          @include flex-mixin(
+            $direction: column,
+            $align-items: flex-start,
+            $gap: 8px
+          );
+          > p {
+            @include text-mixin($size: 20px, $color: $white);
+            @include mq {
+              @include text-mixin($size: 16px, $color: $white);
+            }
+          }
+          > button {
+            color: $white;
+            border: 1px solid $white;
+          }
+        }
+        > button {
+          padding: 0;
+          img {
+            width: 56px;
+            @include mq {
+              width: 40px;
+            }
+          }
+        }
+      }
+    }
+    > div {
+      > ul {
+        @include grid-mixin($columns: 3);
+        @include mq {
+          display: none;
+        }
+      }
+      > div.topics-swiper {
+        display: none;
+        margin-left: 80px;
+        @include mq {
+          display: block;
+        }
+      }
+    }
+  }
+  section.instagrams-sec {
+    background-color: $dark-color;
+    padding-bottom: 565px;
+    @include mq {
+      padding-bottom: 160px;
+    }
+    > div {
+      @include flex-mixin($direction: column, $gap: 144px);
+      @include mq {
+        @include flex-mixin($direction: column, $gap: 120px);
+      }
+      > div.section-title-dark {
+        @include mq {
+          display: none;
+        }
+      }
+      > ul.instagrams-list {
+        width: fit-content;
+        margin: auto;
+        @include grid-mixin($columns: 3, $column-gap: 24px, $row-gap: 24px);
+        @include mq {
+          @include grid-mixin($columns: 2, $column-gap: 6px, $row-gap: 4px);
+        }
+        > li {
+          width: 354px;
+          @include mq {
+            width: 157px;
+          }
+        }
+      }
+      > div.official-sns {
+        @include flex-mixin($direction: column, $gap: 16px);
+        @include mq {
+          @include flex-mixin($direction: column, $gap: 24px);
+        }
+        > p {
+          @include text-mixin(
+            $size: 18px,
+            $letter-spacing: 3px,
+            $color: $white
+          );
+          @include mq {
+            @include text-mixin(
+              $size: 14px,
+              $letter-spacing: 2.2px,
+              $color: $white
+            );
+          }
+        }
+      }
+    }
+  }
+  section.contact-sec {
+    @include flex-mixin($direction: column, $gap: 80px);
+    padding: 400px 0 460px;
+    text-align: center;
+    @include mq {
+      padding: 160px 32px 200px;
+      @include flex-mixin($direction: column, $gap: 64px);
+    }
+    > div {
+      &:first-of-type {
+        h3 {
+          @include text-mixin(
+            $size: 32px,
+            $letter-spacing: 2.5px,
+            $color: $dark-color
+          );
+          @include mq {
+            @include text-mixin(
+              $size: 24px,
+              $letter-spacing: 0.72px,
+              $color: $dark-color
+            );
+          }
+        }
+        p {
+          @include text-mixin(
+            $size: 16px,
+            $weight: 250,
+            $letter-spacing: 1.3px,
+            $color: $dark-color
+          );
+          @include mq {
+            @include text-mixin(
+              $size: 14px,
+              $weight: 250,
+              $letter-spacing: 0.4px,
+              $color: $dark-color
+            );
+          }
+        }
+      }
+      &:nth-of-type(2) {
+        @include flex-mixin($direction: column, $gap: 27px);
+        p {
+          @include text-mixin($size: 18px, $color: $dark-color);
+          @include mq {
+            @include text-mixin($size: 16px, $color: $dark-color);
+          }
+        }
+      }
+    }
+  }
+  section.company-sec {
+    position: relative;
+    padding-bottom: 556px;
+    @include mq {
+      padding-bottom: 160px;
+    }
+    > div {
+      position: absolute;
+      top: -64px;
+      left: 109px;
+      @include mq {
+        position: unset;
+        max-width: 326px;
+        margin: auto;
+        margin-bottom: 24px;
+      }
+      p {
+        writing-mode: vertical-rl;
+        @include text-mixin(
+          $size: 20,
+          $weight: 600,
+          $letter-spacing: 3.2px,
+          $color: $gray-color
+        );
+        @include mq {
+          writing-mode: unset;
+          @include text-mixin(
+            $size: 14,
+            $weight: 600,
+            $letter-spacing: 2.2px,
+            $color: $gray-color
+          );
+        }
+      }
+    }
+    > ul {
+      @include grid-mixin($columns: 3, $column-gap: 0, $row-gap: 0);
+      @include mq {
+        @include grid-mixin($columns: 1, $column-gap: 0, $row-gap: 8px);
+        max-width: 326px;
+      }
+      > li {
+        position: relative;
+        width: 426px;
+        height: 464px;
+        @include mq {
+          width: 326px;
+          height: 200px;
+        }
+        > span {
+          position: absolute;
+          top: 40px;
+          right: 40px;
+          @include mq {
+            top: 20px;
+            right: 20px;
+            > img {
+              width: 34px;
+            }
+          }
+        }
+        > div {
+          position: absolute;
+          left: 50px;
+          bottom: 45px;
+          @include mq {
+            left: 20px;
+            bottom: 12px;
+          }
+          > p {
+            @include text-mixin(
+              $size: 14px,
+              $weight: 250,
+              $letter-spacing: 1.1px,
+              $color: $white
+            );
+            @include mq {
+              @include text-mixin(
+                $size: 12px,
+                $weight: 250,
+                $letter-spacing: 2px,
+                $color: $white
+              );
+            }
+          }
+          > h5 {
+            @include text-mixin(
+              $size: 24px,
+              $letter-spacing: 2px,
+              $color: $white
+            );
+
+            @include mq {
+              @include text-mixin(
+                $size: 18px,
+                $letter-spacing: 1.4px,
+                $color: $white
+              );
+            }
+          }
+        }
+      }
+    }
+  }
+}

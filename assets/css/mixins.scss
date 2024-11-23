@@ -1,0 +1,53 @@
+@mixin container-size(
+  $max-width,
+  $padding-left: 0,
+  $padding-right: 0,
+  $margin: auto
+) {
+  max-width: $max-width;
+  margin: $margin;
+  padding-left: $padding-left;
+  padding-right: $padding-right;
+}
+
+@mixin flex-mixin(
+  $direction: row,
+  $justify-content: space-between,
+  $align-items: center,
+  $gap: 5%,
+  $wrap: nowrap
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  gap: $gap;
+  flex-wrap: $wrap;
+}
+
+@mixin grid-mixin($columns: 3, $column-gap: 70px, $row-gap: 25px) {
+  display: grid;
+  grid-template-columns: repeat($columns, minmax(0, 1fr));
+  column-gap: $column-gap;
+  row-gap: $row-gap;
+}
+
+@mixin text-mixin(
+  $size: 16px,
+  $line-height: 2em,
+  $weight: 300,
+  $letter-spacing: 0,
+  $color: $dark-color
+) {
+  font-size: $size;
+  line-height: $line-height;
+  font-weight: $weight;
+  letter-spacing: $letter-spacing;
+  color: $color;
+}
+
+@mixin mq($breakpoint: 768px) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
